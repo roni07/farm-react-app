@@ -1,0 +1,11 @@
+@import "../../../assets/scss/colors";
+
+.brand {
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 24px;
+  color: $light_black;
+}

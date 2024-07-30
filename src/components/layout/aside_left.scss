@@ -1,0 +1,130 @@
+@import "../../assets/scss/colors";
+
+.aside-left-content {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
+  background-color: $white;
+  padding: 16px;
+
+  .ant-menu-submenu {
+    .ant-menu-submenu-title {
+      margin: 0;
+      width: 100%;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $white;
+      }
+    }
+
+    .ant-menu-sub {
+      .ant-menu-item {
+        background-color: $white;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+
+  .ant-menu-submenu-selected {
+    .ant-menu-submenu-title {
+      color: $white;
+      background-color: $white-seven;
+
+      svg {
+        path {
+          stroke: $white;
+        }
+      }
+
+      &:hover {
+        color: $white;
+        background-color: $white-seven;
+      }
+    }
+
+    .ant-menu-sub {
+      .ant-menu-item {
+        //color: $gray-1;
+        background-color: $white;
+
+        svg {
+          path {
+            //stroke: $gray-1;
+          }
+        }
+
+        &:not(.ant-menu-item-selected) {
+          &:hover {
+            //color: $gray-1;
+            background-color: $white;
+          }
+        }
+      }
+
+      .ant-menu-item-selected {
+        //color: $primary-color;
+        background-color: $white;
+
+        svg {
+          //fill: $primary-color;
+
+          path {
+            //fill: $primary-color;
+            //stroke: $primary-color;
+          }
+        }
+
+        &:hover {
+          //color: $primary-color;
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+  .ant-menu-item {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+
+    &:not(.ant-menu-item-selected) {
+      &:hover {
+        background-color: $white !important;
+        color: $blue-two;
+      }
+
+      svg {
+
+        path {
+          fill: $blue-two;
+        }
+      }
+
+      //color: $blue-two;
+
+    }
+  }
+
+  .ant-menu-item-selected {
+    background-color: $white-seven;
+    color: $light-black;
+    font-weight: 500;
+
+    svg {
+
+      path {
+        fill: $light-black;
+      }
+    }
+
+    &:hover {
+      background-color: $white-seven;
+      color: $light-black;
+    }
+
+  }
+
+}

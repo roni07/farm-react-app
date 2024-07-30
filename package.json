@@ -1,0 +1,33 @@
+{
+  "name": "react-template",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "farm start --mode dev",
+    "dev:build": "farm build --mode dev",
+    "stage": "farm start --mode stage",
+    "stage:build": "farm build --mode stage",
+    "prod": "farm start --mode prod",
+    "prod:build": "farm build --mode prod",
+    "preview": "farm preview",
+    "clean": "farm clean"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.4.0",
+    "@types/react-router-dom": "^5.3.3",
+    "antd": "^5.19.4",
+    "prop-types": "^15.8.1",
+    "react": "18",
+    "react-dom": "18",
+    "react-router-dom": "^6.25.1",
+    "sass": "^1.77.8"
+  },
+  "devDependencies": {
+    "@farmfe/cli": "^1.0.2",
+    "@farmfe/core": "^1.3.0",
+    "@farmfe/plugin-react": "^1.2.0",
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "core-js": "^3.36.1",
+    "react-refresh": "^0.14.0"
+  }
+}
