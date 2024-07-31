@@ -1,20 +1,22 @@
+import React from "react";
+
 interface ImageViewProps {
-    url: string,
-    style?: { string },
-    cursor?: string | "pointer"
+    url?: string,
+    style?: React.CSSProperties,
+    cursor?: string | "pointer",
+    onClick?: () => void,
 }
 
-const ImageView = ({url, style, onClick}: ImageViewProps) => {
+const ImageView = ({url, style, onClick, cursor}: ImageViewProps) => {
 
     if (url) {
         return <img
             style={{...style, cursor}}
             src={url}
-            onClick={onClick ? onClick : null}
-            // onError={(e) => {
-            //     e.target.onerror = null;
-            //     e.target.src = "/assets/images/no_image_icon.png"
-            // }}
+            onClick={onClick || undefined}
+            onError={e => {
+                (e.target as HTMLImageElement).src = "/assets/images/no_image_icon.png"
+            }}
             alt="no_image"
         />
     }

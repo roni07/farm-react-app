@@ -22,7 +22,6 @@ const NavHeader = () => {
 
             <Flex align="center" gap={18}>
                 <ImageView
-                    url={retrieveImageUrl(profile?.profilePicture)}
                     style={{width: "40px", height: "40px", borderRadius: "50%"}}
                 />
 

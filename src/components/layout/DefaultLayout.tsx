@@ -1,4 +1,4 @@
-import {lazy, Suspense, useState} from 'react';
+import {lazy, Suspense} from 'react';
 import {Layout} from 'antd';
 import {Navigate, Route, Routes} from "react-router-dom";
 import PageRoutes from "../../routes/PageRoutes";
@@ -7,13 +7,13 @@ import NavHeader from "./header/NavHeader.tsx";
 import LoadingSuspense from "../common/LoadingSuspense.tsx";
 import Page404 from "../../pages/error_pages/Page404.tsx";
 
-const AsideLeft = lazy(() => import('./AsideLeft.jsx'));
+const AsideLeft = lazy(() => import('./AsideLeft.tsx'));
 
 const {Sider, Content} = Layout;
 
 const DefaultLayout = () => {
 
-    const [profileLoading, setProfileLoading] = useState(false);
+    const profileLoading = false;
 
     return (
         <Layout>
@@ -23,7 +23,9 @@ const DefaultLayout = () => {
                 theme="light"
                 className="my-sider"
             >
-                <Suspense fallback={<LoadingSuspense height="100vh"/>}>
+                <Suspense
+                    fallback={<LoadingSuspense height="100vh"/>}
+                >
                     <AsideLeft/>
                 </Suspense>
             </Sider>

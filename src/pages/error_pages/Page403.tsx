@@ -1,4 +1,3 @@
-import React from 'react';
 import {ROOT_PATH} from "../../routes/Slug";
 import ErrorLayout from "../../components/layout/ErrorLayout.jsx";
 

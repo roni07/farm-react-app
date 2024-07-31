@@ -1,5 +1,5 @@
 import {ROOT_PATH} from "../../routes/Slug";
-import ErrorLayout from "../../components/layout/ErrorLayout.jsx";
+import ErrorLayout from "../../components/layout/ErrorLayout.tsx";
 
 const Page404 = () => {
     return (

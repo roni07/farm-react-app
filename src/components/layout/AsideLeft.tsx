@@ -1,19 +1,15 @@
-import React, {useContext, useState} from 'react';
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {Menu} from 'antd';
-import Brand from './brand/Brand.jsx';
+import {Menu, MenuProps} from 'antd';
+import Brand from './brand/Brand.tsx';
 import Navs from "../../routes/Navs.ts";
-import {menuIcons} from "../../utils/Icons.tsx";
-import {AuthContext} from "../../context/AuthContextProvider.jsx";
-import NavsTwo from "../../routes/NavsTwo.js";
 import {ROOT_PATH} from "../../routes/Slug.ts";
 
 import "./aside_left.scss";
-import {hasPermission} from "../../utils/GenericUtils.js";
+
+type MenuItem = Required<MenuProps>['items'][number];
 
 const AsideLeft = () => {
-
-    const {loggedUserRoles, logout} = useContext(AuthContext);
 
     const [stateOpenKeys, setStateOpenKeys] = useState(['']);
 
@@ -21,10 +17,10 @@ const AsideLeft = () => {
     * Below code used for only one menu will be open at a time
     * */
 
-    const getLevelKeys = (items1) => {
-        const key = {};
-        const func = (items2, level = 1) => {
-            items2.forEach((item) => {
+    const getLevelKeys = (items1: any) => {
+        const key: any = {};
+        const func = (items2: any, level = 1) => {
+            items2.forEach((item: any) => {
                 if (item.key) {
                     key[item.key] = level;
                 }
@@ -38,19 +34,19 @@ const AsideLeft = () => {
     };
     const levelKeys = getLevelKeys(Navs);
 
-    const onOpenChange = (openKeys) => {
-        const currentOpenKey = openKeys.find((key) => stateOpenKeys.indexOf(key) === -1);
+    const onOpenChange = (openKeys: any) => {
+        const currentOpenKey = openKeys.find((key: any) => stateOpenKeys.indexOf(key) === -1);
         // open
         if (currentOpenKey !== undefined) {
             const repeatIndex = openKeys
-                .filter((key) => key !== currentOpenKey)
-                .findIndex((key) => levelKeys[key] === levelKeys[currentOpenKey]);
+                .filter((key: any) => key !== currentOpenKey)
+                .findIndex((key: any) => levelKeys[key] === levelKeys[currentOpenKey]);
             setStateOpenKeys(
                 openKeys
                     // remove repeat key
-                    .filter((_, index) => index !== repeatIndex)
+                    .filter((_: any, index: number) => index !== repeatIndex)
                     // remove current level all child
-                    .filter((key) => levelKeys[key] <= levelKeys[currentOpenKey]),
+                    .filter((key: any) => levelKeys[key] <= levelKeys[currentOpenKey]),
             );
         } else {
             // close
@@ -58,9 +54,9 @@ const AsideLeft = () => {
         }
     };
 
-    const onSelect = key => {
+    const onSelect = (key: any) => {
 
-        const _keyMap = {
+        const _keyMap: Record<string, string> = {
             "user-list": "user-list",
             "setting": "setting",
             "monitor": "monitor"
@@ -76,7 +72,7 @@ const AsideLeft = () => {
 
     /* Menu Binding Start */
 
-    const bindSingleMenuItem = (item) => {
+    const bindSingleMenuItem = (item: any) => {
         return (
             {
                 key: item.key,
@@ -91,43 +87,43 @@ const AsideLeft = () => {
         )
     }
 
-    const bindSubMenuItem = item => {
+    const bindSubMenuItem = (item: any) => {
         return (
             {
                 key: item.key,
                 label: <div style={{fontSize: "16px"}}>{item.title}</div>,
                 icon: item.icon,
-                children: item.subMenu.map(childItem => getMenuItems(childItem))
+                children: item.subMenu.map((childItem: any) => getMenuItems(childItem))
             }
         )
     }
 
-    const getMenuItems = (item) => {
+    const getMenuItems = (item: any) => {
 
-        if (!hasPermission(loggedUserRoles, item.roles)) {
-            return null;
-        }
+        // if (!hasPermission(loggedUserRoles, item.roles)) {
+        //     return null;
+        // }
 
         return item.subMenu ? bindSubMenuItem(item) : bindSingleMenuItem(item);
     }
 
-    const menuItems = () => {
+    const menuItems = (): MenuItem[] => {
         return [
             ...Navs.map(item => getMenuItems(item)),
             {
                 type: "divider",
             },
-            ...NavsTwo.map(item => getMenuItems(item)),
-            {
-                key: "sign-out",
-                label: <div
-                    style={{fontSize: "16px"}}
-                    onClick={logout}
-                >
-                    Sign Out
-                </div>,
-                icon: menuIcons("signOut"),
-            }
+            // ...NavsTwo.map(item => getMenuItems(item)),
+            // {
+            //     key: "sign-out",
+            //     label: <div
+            //         style={{fontSize: "16px"}}
+            //         onClick={logout}
+            //     >
+            //         Sign Out
+            //     </div>,
+            //     icon: menuIcons("signOut"),
+            // }
         ];
     }
 

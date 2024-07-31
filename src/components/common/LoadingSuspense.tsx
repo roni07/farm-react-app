@@ -1,8 +1,8 @@
 import {Spin} from 'antd';
 
 interface LoadingSuspenseProps {
-    width: string,
-    height: string,
+    width?: string,
+    height?: string,
 }
 
 const LoadingSuspense = ({width = "100%", height = "100%"}: LoadingSuspenseProps) => {

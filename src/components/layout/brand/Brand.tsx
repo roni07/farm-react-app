@@ -1,5 +1,3 @@
-import React from 'react';
-
 import "./brand.scss";
 
 const Brand = () => {
